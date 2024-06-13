@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
+use Illuminate\Support\Facades\DB;
+
 class UsersController extends Controller
 {
     
@@ -40,12 +42,26 @@ class UsersController extends Controller
         //$confirmCode = str_random(60);
         $confirmCode = Str::random(60);
         
+        /*
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
             'confirm_code' => $confirmCode,
         ]);
+        */
+        DB::statement('
+            INSERT INTO users (name, email, password, confirm_code, activated)
+            VALUES (?, ?, ?, ?, ?)
+        ', [
+            $request->input('name'),
+            $request->input('email'),
+            bcrypt($request->input('password')),
+            $confirmCode,
+            0, // Assuming 'activated' defaults to 0 until confirmation
+        ]);
+        $user_id = DB::getPdo()->lastInsertId();
+        //echo $user_id;
 
         //event(new \App\Events\UserCreated($user));
 
