@@ -7,8 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <title>{{ config('app.name', 'Laravel') }}</title>
-    {{--<link rel="stylesheet" href="{{ mix('css/app.css') }}">--}}
-    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     @yield('style')
 
     <!-- Scripts -->
@@ -32,8 +31,7 @@
 
     @include('layouts.partial.footer')
 
-    {{--<script src="{{ mix('js/app.js') }}"></script>--}}
-    <script src="js/app.js"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 
     @yield('script')
 </body>
