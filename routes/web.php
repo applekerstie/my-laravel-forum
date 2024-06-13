@@ -20,3 +20,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('auth/register', [App\Http\Controllers\UsersController::class, 'create'])->name('users.create');
 Route::post('auth/register', [App\Http\Controllers\UsersController::class, 'store'])->name('users.store');
 
+/* 사용자 인증 */
+Route::get('auth/login', [App\Http\Controllers\SessionsController::class, 'create'])->name('sessions.create');
+
+
