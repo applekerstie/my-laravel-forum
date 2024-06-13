@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('root');
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/* 사용자 등록 */
+Route::get('auth/register', [App\Http\Controllers\UsersController::class, 'create'])->name('users.create');
+Route::post('auth/register', [App\Http\Controllers\UsersController::class, 'store'])->name('users.store');
 

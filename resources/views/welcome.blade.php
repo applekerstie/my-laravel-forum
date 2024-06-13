@@ -95,21 +95,26 @@
         {{-- 
         <a href="{{ url('docs') }}">
           {{ trans('docs.title') }}
+          마크다운 뷰어
         </a>
         <a href="{{ route('articles.index') }}">
           {{ trans('forum.title') }}
+          포럼
         </a>
         --}}
         @if (auth()->guest())
           <a href="{{ route('sessions.create') }}">
-            {{ trans('auth.sessions.title') }}
+            {{--{{ trans('auth.sessions.title') }}--}}
+            로그인
           </a>
           <a href="{{ route('users.create') }}">
-            {{ trans('auth.users.title') }}
+            {{--{{ trans('auth.users.title') }}--}}
+            회원가입
           </a>
         @else
           <a href="{{ route('sessions.destroy') }}">
-            {{ auth()->user()->name }} • {{ trans('auth.sessions.destroy') }}
+            {{--{{ auth()->user()->name }} • {{ trans('auth.sessions.destroy') }}--}}
+            {{ auth()->user()->name }} • 로그아웃
           </a>
         @endif
       </div>
